@@ -1,11 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reddit clone</title>
-</head>
-<body>
-    
-</body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "lime-custom": "#FAE268",
+              "green-custom": "#2e7d32",
+              "lime-light": "#F9FFD7",
+              "faq-background": "#fcffec",
+            },
+            fontFamily: {
+              montserrat: ["Montserrat", "sans-serif"],
+              roboto: ["Roboto", "sans-serif"],
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <nav
+      class="flex items-center justify-between bg-white p-4 md:p-5 shadow-sm relative"
+    >
+      <a href="#" class="flex items-center">
+        <img src="assets/logo.png" alt="Logo" class="w-20 md:w-24" />
+      </a>
+
+      <button id="menu-btn" class="md:hidden text-gray-700 z-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="menu"
+        class="hidden md:flex md:flex-row md:gap-5 md:static md:w-auto md:bg-transparent md:shadow-none md:p-0 flex-col absolute top-full left-0 w-full bg-white shadow-lg px-8 py-2 gap-5 z-50 transition-all duration-300 ease-in-out"
+      >
+        <form class="w-full md:w-64 mb-4 md:mb-0">
+          <div
+            class="flex items-center w-full border border-gray-300 rounded-full px-3 py-2 bg-gray-100"
+          >
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="text-gray-500"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              placeholder="Search Reddit"
+              class="w-full outline-none text-sm placeholder-gray-400 bg-transparent ml-2 py-1"
+            />
+          </div>
+        </form>
+
+        <a href="#" class="flex justify-center md:justify-start mb-4 md:mb-0">
+          <img src="assets/message.svg" alt="Message" class="w-8 md:w-9 mt-2" />
+        </a>
+        <button
+          class="flex items-center justify-center gap-2 font-bold text-white bg-orange-500 rounded-full px-5 py-2 text-sm w-full md:w-auto hover:bg-orange-600 transition mb-2"
+        >
+          Log in
+        </button>
+      </div>
+    </nav>
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const menu = document.getElementById("menu");
+      menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menu.classList.toggle("hidden");
+      });
+      document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+          menu.classList.add("hidden");
+        }
+      });
+      menu.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          menu.classList.remove("hidden");
+        } else {
+          menu.classList.add("hidden");
+        }
+      });
+    </script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
