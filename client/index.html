@@ -1,11 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reddit clone</title>
-</head>
-<body>
-    
-</body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "lime-custom": "#FAE268",
+              "green-custom": "#2e7d32",
+              "lime-light": "#F9FFD7",
+              "faq-background": "#fcffec",
+            },
+            fontFamily: {
+              montserrat: ["Montserrat", "sans-serif"],
+              roboto: ["Roboto", "sans-serif"],
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <nav
+      class="flex items-center justify-between bg-white p-2 md:p-5 md:gap-5 gap-2 shadow-sm"
+    >
+      <a href="#" class="flex items-center">
+        <img src="assets/logo.png" alt="Logo" class="md:w-[100px] w-[80px]" />
+      </a>
+
+      <form class="flex items-center flex-1 md:mx-4">
+        <div
+          class="flex items-center w-full border border-gray-300 rounded-full px-3 gap-2 bg-gray-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-gray-500"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="text"
+            placeholder="Search Reddit"
+            class="md:w-full w-[90px] outline-none text-sm placeholder-gray-400 bg-gray-200 py-3"
+          />
+        </div>
+      </form>
+
+      <div class="flex items-center gap-3 md:gap-5 mt-2 md:mt-0">
+        <a href="#">
+          <img src="assets/message.svg" alt="Message" class="w-9 md:w-10" />
+        </a>
+        <button
+          class="flex items-center gap-2 font-bold text-white bg-orange-500 rounded-full px-2 py-1 md:px-4 md:py-2"
+        >
+          Log in
+        </button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          class="w-6 h-6"
+        >
+          <circle cx="5" cy="12" r="2" />
+          <circle cx="12" cy="12" r="2" />
+          <circle cx="19" cy="12" r="2" />
+        </svg>
+      </div>
+    </nav>
+
+    <script src="js/main.js"></script>
+  </body>
 </html>
