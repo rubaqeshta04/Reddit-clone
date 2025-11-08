@@ -28,8 +28,18 @@
         },
       };
     </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
   </head>
-  <body>
+  <body class="">
     <nav
       class="flex items-center justify-between bg-white p-4 md:p-5 shadow-sm relative"
     >
@@ -246,6 +256,104 @@
               >
                 Blog
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full">
+        <div class="relative w-full max-w-6xl mx-auto py-8">
+          <!-- Arrows -->
+          <button
+            id="prev"
+            class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full flex justify-center items-center z-20 hover:bg-black"
+          >
+            ←
+          </button>
+
+          <button
+            id="next"
+            class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full flex justify-center items-center z-20 hover:bg-black"
+          >
+            →
+          </button>
+
+          <!-- Slider -->
+          <div
+            id="slider"
+            class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar px-2"
+          >
+            <!-- Card -->
+            <div
+              class="snap-start rounded-xl overflow-hidden relative"
+              style="background-image: url(assets/reddit.jpeg)"
+            >
+              <div
+                class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <p class="text-white font-semibold text-lg">Card Title 1</p>
+              </div>
+            </div>
+            <div
+              class="snap-start min-w-[260px] h-72 rounded-xl overflow-hidden relative bg-center bg-cover"
+              style="background-image: url(assets/reddit.jpeg)"
+            >
+              <div
+                class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <p class="text-white font-semibold text-lg">Card Title 1</p>
+              </div>
+            </div>
+            <div
+              class="snap-start min-w-[260px] h-72 rounded-xl overflow-hidden relative bg-center bg-cover"
+              style="background-image: url(assets/reddit.jpeg)"
+            >
+              <div
+                class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <p class="text-white font-semibold text-lg">Card Title 1</p>
+              </div>
+            </div>
+            <div
+              class="snap-start min-w-[260px] h-72 rounded-xl overflow-hidden relative bg-center bg-cover"
+              style="background-image: url(assets/reddit.jpeg)"
+            >
+              <div
+                class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <p class="text-white font-semibold text-lg">Card Title 1</p>
+              </div>
+            </div>
+            <div
+              class="snap-start min-w-[260px] h-72 rounded-xl overflow-hidden relative bg-center bg-cover"
+              style="background-image: url(assets/reddit.jpeg)"
+            >
+              <div
+                class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <p class="text-white font-semibold text-lg">Card Title 2</p>
+              </div>
+            </div>
+
+            <div
+              class="snap-start min-w-[260px] h-72 rounded-xl overflow-hidden relative bg-center bg-cover"
+              style="background-image: url(assets/reddit.jpeg)"
+            >
+              <div
+                class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <p class="text-white font-semibold text-lg">Card Title 3</p>
+              </div>
+            </div>
+
+            <div
+              class="snap-start min-w-[260px] h-72 rounded-xl overflow-hidden relative bg-center bg-cover"
+              style="background-image: url(assets/reddit.jpeg)"
+            >
+              <div
+                class="absolute bottom-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <p class="text-white font-semibold text-lg">Card Title 4</p>
+              </div>
             </div>
           </div>
         </div>
