@@ -20,26 +20,40 @@ window.addEventListener("resize", () => {
   }
 });
 
+// const menuBtnSidebar = document.getElementById("menu-btn-sidebar");
+// const Sidebar = document.getElementById("sidebar");
+// menuBtnSidebar.addEventListener("click", () => {
+//   Sidebar.classList.remove("hidden");
+//   Sidebar.classList.add("flex");
+//   menuBtnSidebar.classList.add("hidden");
+// });
+
+// const closeSidebar = document.getElementById("close-sidebar");
+// closeSidebar.addEventListener("click", () => {
+//   Sidebar.classList.remove("flex");
+//   Sidebar.classList.add("hidden");
+//   menuBtnSidebar.classList.remove("hidden");
+//   menuBtnSidebar.classList.add("flex");
+// });
+
+const sidebar = document.getElementById("sidebar");
 const menuBtnSidebar = document.getElementById("menu-btn-sidebar");
-const Sidebar = document.getElementById("sidebar");
-menuBtnSidebar.addEventListener("click", () => {
-  Sidebar.classList.remove("hidden");
-  Sidebar.classList.add("flex");
-  menuBtnSidebar.classList.add("hidden");
-});
-
 const closeSidebar = document.getElementById("close-sidebar");
-closeSidebar.addEventListener("click", () => {
-  Sidebar.classList.remove("flex");
-  Sidebar.classList.add("hidden");
-  menuBtnSidebar.classList.remove("hidden");
-  menuBtnSidebar.classList.add("flex");
+
+// فتح السايدبار
+menuBtnSidebar.addEventListener("click", () => {
+  sidebar.classList.add("sidebar-active");
 });
 
-const slider = document.getElementById("slider");
-const next = document.getElementById("next");
-const prev = document.getElementById("prev");
+// إغلاق السايدبار عند الضغط على زر الإغلاق
+closeSidebar.addEventListener("click", () => {
+  sidebar.classList.remove("sidebar-active");
+});
 
-// تمرير يمين ويسار عند الضغط على الأزرار
-next.onclick = () => (slider.scrollLeft += slider.clientWidth * 0.85);
-prev.onclick = () => (slider.scrollLeft -= slider.clientWidth * 0.85);
+// إغلاق السايدبار عند الضغط خارج السايدبار (optional)
+document.addEventListener("click", (e) => {
+  if (!sidebar.contains(e.target) && !menuBtnSidebar.contains(e.target)) {
+    sidebar.classList.remove("sidebar-active");
+  }
+});
+
