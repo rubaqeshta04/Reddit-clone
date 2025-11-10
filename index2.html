@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reddit clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="flex items-center justify-between bg-white p-4 shadow-sm">
+      <img src="assets/logo.png" alt="Logo" class="w-20" />
+
+      <!-- Sidebar toggle button (mobile only) -->
+      <button id="menu-btn-sidebar" class="md:hidden text-gray-700 z-20">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Wrapper -->
+    <div class="flex">
+      <!-- Sidebar -->
+      <div
+        id="sidebar"
+        class="fixed md:static top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-50 overflow-y-auto"
+      >
+        <div class="flex justify-between items-center p-4 border-b">
+          <h2 class="text-lg font-semibold">Menu</h2>
+          <button id="close-sidebar" class="md:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-gray-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="p-5 space-y-4">
+          <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+            <img src="assets/house.svg" alt="" class="w-6" />
+            <p class="text-gray-700 font-medium">Home</p>
+          </div>
+          <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+            <img src="assets/person.svg" alt="" class="w-6" />
+            <p class="text-gray-700 font-medium">Popular</p>
+          </div>
+          <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+            <img src="assets/comment.svg" alt="" class="w-6" />
+            <p class="text-gray-700 font-medium">Answer</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overlay when sidebar open (mobile only) -->
+      <div
+        id="overlay"
+        class="hidden fixed inset-0 bg-black/40 z-40 md:hidden"
+      ></div>
+
+      <!-- Main Content -->
+      <main
+        class="flex-1 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <div
+          class="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        >
+          <img
+            src="https://picsum.photos/400/250"
+            alt="Card Image"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-5">
+            <h5 class="text-2xl font-bold text-gray-800 mb-2">
+              Beautiful Landscape
+            </h5>
+            <p class="text-gray-600 mb-4">
+              Discover stunning views and peaceful scenery in this amazing
+              travel destination.
+            </p>
+            <button
+              class="w-full sm:w-auto px-5 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition"
+            >
+              Explore More
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        >
+          <img
+            src="https://picsum.photos/400/250?random=1"
+            alt="Card Image"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-5">
+            <h5 class="text-2xl font-bold text-gray-800 mb-2">City Nights</h5>
+            <p class="text-gray-600 mb-4">
+              Experience the urban lifestyle and enjoy the nightlife of vibrant
+              cities.
+            </p>
+            <button
+              class="w-full sm:w-auto px-5 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition"
+            >
+              Explore More
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        >
+          <img
+            src="https://picsum.photos/400/250?random=2"
+            alt="Card Image"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-5">
+            <h5 class="text-2xl font-bold text-gray-800 mb-2">Ocean Waves</h5>
+            <p class="text-gray-600 mb-4">
+              Feel the breeze and listen to the relaxing sounds of the sea.
+            </p>
+            <button
+              class="w-full sm:w-auto px-5 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition"
+            >
+              Explore More
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- JS -->
+    <script>
+      const menuBtn = document.getElementById("menu-btn-sidebar");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      const closeBtn = document.getElementById("close-sidebar");
+
+      menuBtn.addEventListener("click", () => {
+        sidebar.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      });
+
+      overlay.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>
