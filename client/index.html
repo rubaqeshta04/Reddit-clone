@@ -45,7 +45,7 @@
       }
     </style>
   </head>
-  <body class="">
+  <body class="relative">
     <nav
       class="flex items-center justify-between bg-white p-4 md:p-5 shadow-sm relative"
     >
@@ -105,6 +105,7 @@
         </a>
         <button
           class="flex items-center justify-center gap-2 font-bold text-white bg-orange-500 rounded-full px-5 py-2 text-sm w-full md:w-auto hover:bg-orange-600 transition mb-2"
+          id="openModalBtn"
         >
           Log in
         </button>
@@ -463,6 +464,58 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- الخلفية (Overlay) -->
+    <div
+      id="loginModal"
+      class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+    >
+      <!-- modal-->
+      <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6 relative">
+        <!-- close button-->
+        <button
+          id="closeModalBtn"
+          class="absolute top-4 right-4 text-gray-400 hover:text-black text-xl"
+        >
+          ✕
+        </button>
+
+        <h2 class="text-2xl font-bold text-center mb-2">Log In</h2>
+        <p class="text-center text-gray-500 text-sm mb-6">
+          By continuing, you agree to our
+          <a href="#" class="text-blue-500">User Agreement</a> and
+          <a href="#" class="text-blue-500">Privacy Policy</a>.
+        </p>
+
+        <!-- Login form-->
+        <form class="flex flex-col gap-3">
+          <input
+            type="text"
+            placeholder="Email or username"
+            required
+            class="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            class="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <p class="text-start text-sm text-gray-600 mt-4 py-2">
+            New to Reddit?
+            <a href="#" class="text-blue-500 hover:underline">Sign Up</a>
+          </p>
+          <button
+            type="submit"
+            id="loginBtn"
+            class="bg-blue-600 text-white rounded-full py-2 mt-2 hover:bg-blue-700 transition"
+          >
+            Log In
+          </button>
+        </form>
       </div>
     </div>
     <script src="js/main.js"></script>

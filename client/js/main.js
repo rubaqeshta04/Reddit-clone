@@ -56,4 +56,58 @@ document.addEventListener("click", (e) => {
     sidebar.classList.remove("sidebar-active");
   }
 });
+// Modal elements
+const modal = document.getElementById("loginModal");
+const openBtn = document.getElementById("openModalBtn");
+const closeBtn = document.getElementById("closeModalBtn");
 
+// open modal
+openBtn.addEventListener("click", () => {
+  modal.classList.remove("hidden");
+});
+
+// close button
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
+const loginBtn = document.getElementById("loginBtn");
+const inputs = document.querySelectorAll("#loginModal input");
+
+inputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    const allFilled = Array.from(inputs).every((i) => i.value.trim() !== "");
+    if (allFilled) {
+      loginBtn.disabled = false;
+      loginBtn.classList.remove(
+        "bg-gray-200",
+        "text-gray-500",
+        "cursor-not-allowed"
+      );
+      loginBtn.classList.add("bg-blue-600", "text-white", "hover:bg-blue-700");
+    } else {
+      loginBtn.disabled = true;
+      loginBtn.classList.add(
+        "bg-gray-200",
+        "text-gray-500",
+        "cursor-not-allowed"
+      );
+      loginBtn.classList.remove(
+        "bg-blue-600",
+        "text-white",
+        "hover:bg-blue-700"
+      );
+    }
+  });
+});
+loginBtn.addEventListener("click", () => {
+  inputs.forEach(input => input.value = "");
+  loginBtn.disabled = true;
+  loginBtn.classList.add("bg-gray-200", "text-gray-500", "cursor-not-allowed");
+  loginBtn.classList.remove("bg-blue-600", "text-white", "hover:bg-blue-700");
+});
