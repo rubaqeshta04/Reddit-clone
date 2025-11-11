@@ -77,7 +77,7 @@ modal.addEventListener("click", (e) => {
   }
 });
 const loginBtn = document.getElementById("loginBtn");
-const inputs = document.querySelectorAll("#loginModal input");
+const inputs = document.querySelectorAll("#loginForm input");
 
 inputs.forEach((input) => {
   input.addEventListener("input", () => {
@@ -106,8 +106,57 @@ inputs.forEach((input) => {
   });
 });
 loginBtn.addEventListener("click", () => {
-  inputs.forEach(input => input.value = "");
+  inputs.forEach((input) => (input.value = ""));
   loginBtn.disabled = true;
   loginBtn.classList.add("bg-gray-200", "text-gray-500", "cursor-not-allowed");
   loginBtn.classList.remove("bg-blue-600", "text-white", "hover:bg-blue-700");
+});
+
+const signupNavigator = document.getElementById("signupNavigator");
+const loginNavigator = document.getElementById("loginNavigator");
+const signupForm = document.getElementById("signupForm");
+const loginForm = document.getElementById("loginForm");
+signupNavigator.addEventListener("click", () => {
+  loginForm.classList.add("hidden");
+  signupForm.classList.remove("hidden");
+  signupForm.classList.add("flex");
+});
+loginNavigator.addEventListener("click", () => {
+  signupForm.classList.add("hidden");
+  loginForm.classList.remove("hidden");
+  loginForm.classList.add("flex");
+  signupForm.classList.remove("flex");
+});
+
+const signupInputs = document.querySelectorAll("#signupForm input");
+const signupBtn = document.getElementById("signupBtn");
+
+signupInputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    const isFilledInputs = Array.from(signupInputs).every(
+      (i) => i.value.trim() !== ""
+    );
+    if (isFilledInputs) {
+      signupBtn.disabled = false;
+      signupBtn.classList.remove(
+        "bg-gray-200",
+        "text-gray-500",
+        "cursor-not-allowed"
+      );
+
+      signupBtn.classList.add("bg-blue-600", "text-white", "hover:bg-blue-700");
+    } else {
+      signupBtn.disabled = true;
+      signupBtn.classList.add(
+        "bg-gray-200",
+        "text-gray-500",
+        "cursor-not-allowed"
+      );
+      signupBtn.classList.remove(
+        "bg-blue-600",
+        "text-white",
+        "hover:bg-blue-700"
+      );
+    }
+  });
 });
