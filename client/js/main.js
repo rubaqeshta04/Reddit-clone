@@ -105,3 +105,9 @@ inputs.forEach((input) => {
     }
   });
 });
+loginBtn.addEventListener("click", () => {
+  inputs.forEach(input => input.value = "");
+  loginBtn.disabled = true;
+  loginBtn.classList.add("bg-gray-200", "text-gray-500", "cursor-not-allowed");
+  loginBtn.classList.remove("bg-blue-600", "text-white", "hover:bg-blue-700");
+});
